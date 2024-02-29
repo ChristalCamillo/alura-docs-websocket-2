@@ -10,6 +10,7 @@ function registrarEventosLogin(socket, io) {
       const autenticado = autenticarUsuario(senha, usuario);
 
       if (autenticado) {
+        //o parametro do jwt é o que eu quero guardar do usuario para ser lembrado, como um objeto
         const tokenJwt = gerarJwt({ nomeUsuario: nome });
 
         socket.emit('autenticacao_sucesso', tokenJwt);
