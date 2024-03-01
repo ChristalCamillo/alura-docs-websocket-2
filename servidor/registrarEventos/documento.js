@@ -12,6 +12,9 @@ function registrarEventosDocumento(socket, io) {
       adicionarConexao({nomeDocumento, nomeUsuario});
 
       const usuariosNoDocumento = obterUsuariosDocumento(nomeDocumento);
+      
+      //emitindo o evento para todos incluindo o usuario conectado, por isso usamos io em vez de socket
+      io.to(nomeDocumento).emit('usuarios_no_documento', usuariosNoDocumento);
 
       devolverTexto(documento.texto);
     }

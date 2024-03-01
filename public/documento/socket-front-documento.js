@@ -1,4 +1,4 @@
-import { alertarERedirecionar, atualizaTextoEditor, tratarAutorizacaoSucesso } from './documento.js';
+import { alertarERedirecionar, atualizaTextoEditor, atualizarInterfaceUsuarios, tratarAutorizacaoSucesso } from './documento.js';
 import { obterCookie } from '../utils/cookies.js';
 
 // eslint-disable-next-line no-undef
@@ -20,6 +20,8 @@ function selecionarDocumento(dadosEntrada) {
     atualizaTextoEditor(texto);
   });
 }
+
+socket.on('usuarios_no_documento', atualizarInterfaceUsuarios);
 
 function emitirTextoEditor(dados) {
   socket.emit('texto_editor', dados);
